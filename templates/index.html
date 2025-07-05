@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fake News Detector</title>
+    <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+    <h2>Paste News Article URL</h2>
+    <input type="text" id="urlInput" placeholder="Enter article URL" size="50">
+    <br><br>
+    <button onclick="checkFake()">Check Credibility</button>
+
+    <h3>Prediction Result:</h3>
+    <div id="predictionResult" style="font-weight: bold; font-size: 18px;"></div>
+
+    <script>
+        async function checkFake() {
+            const url = document.getElementById("urlInput").value;
+            const resultDiv = document.getElementById("predictionResult");
+
+            resultDiv.textContent = "⏳ Checking...";
+
+            try {
+                const res = await fetch("/check_fake", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ url: url })
+                });
+
+                const data = await res.json();
+
+                if (data.result) {
+                    resultDiv.textContent = `Result: ${data.result}`;
+                } else {
+                    resultDiv.textContent = `❌ Error: ${data.error || "Unknown error"}`;
+                }
+            } catch (err) {
+                resultDiv.textContent = `❌ Network Error: ${err.message}`;
+            }
+        }
+    </script>
+</body>
+</html>
