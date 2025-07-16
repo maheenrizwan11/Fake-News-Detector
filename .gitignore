@@ -1,5 +1,5 @@
 # Virtual environment
-venv/
+venv310/
 
 # Python cache and bytecode
 __pycache__/

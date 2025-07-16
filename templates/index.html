@@ -3,42 +3,79 @@
 <head>
     <title>Fake News Detector</title>
     <link rel="stylesheet" href="/static/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
 </head>
 <body>
-    <h2>Paste News Article URL</h2>
-    <input type="text" id="urlInput" placeholder="Enter article URL" size="50">
-    <br><br>
-    <button onclick="checkFake()">Check Credibility</button>
+    <div class="container">
+        <h2>Paste News Article URL</h2>
+        <input type="text" id="urlInput" placeholder="Enter article URL">
+        <button onclick="checkFake()">Check Credibility</button>
+        <button onclick="clearHistory()">Clear History</button>
 
-    <h3>Prediction Result:</h3>
-    <div id="predictionResult" style="font-weight: bold; font-size: 18px;"></div>
+        <h3>Prediction Result:</h3>
+        <div id="predictionResult"></div>
+
+        <h3>Search History</h3>
+        <ul id="historyList"></ul>
+    </div>
 
     <script>
         async function checkFake() {
-            const url = document.getElementById("urlInput").value;
-            const resultDiv = document.getElementById("predictionResult");
+        const url = document.getElementById("urlInput").value;
+        const resultDiv = document.getElementById("predictionResult");
 
-            resultDiv.textContent = "⏳ Checking...";
+        resultDiv.textContent = "Checking credibility...";
 
-            try {
-                const res = await fetch("/check_fake", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({ url: url })
+        try {
+            const response = await fetch("/check_fake", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ url: url })
+            });
+
+            const data = await response.json();
+            const resultText = data.result || `Error: ${data.error || "Unknown error"}`;
+
+            resultDiv.textContent = `Result: ${resultText}`;
+
+
+        } catch (err) {
+            resultDiv.textContent = `Network Error: ${err.message}`;
+        }
+    }
+
+        function fetchServerHistory() {
+            fetch("/history")
+                .then(res => res.json())
+                .then(data => {
+                    const historyList = document.getElementById("historyList");
+                    historyList.innerHTML = "";
+                    data.forEach(entry => {
+                        const li = document.createElement("li");
+                        li.textContent = `[${entry.timestamp}] ${entry.url} → ${entry.result}`;
+                        historyList.appendChild(li);
+                    });
+                })
+                .catch(err => {
+                    console.error("Error loading server history:", err);
                 });
+        }
+        window.onload = fetchServerHistory();
 
-                const data = await res.json();
-
-                if (data.result) {
-                    resultDiv.textContent = `Result: ${data.result}`;
-                } else {
-                    resultDiv.textContent = `❌ Error: ${data.error || "Unknown error"}`;
-                }
-            } catch (err) {
-                resultDiv.textContent = `❌ Network Error: ${err.message}`;
-            }
+        function clearHistory() {
+            fetch("/clear_history", { method: "POST" })
+                .then(res => res.json())
+                .then(data => {
+                    document.getElementById("historyList").innerHTML = "";
+                    alert("Search history cleared.");
+                })
+                .catch(err => {
+                    alert("Error clearing history: " + err.message);
+                });
         }
     </script>
 </body>

@@ -1,23 +1,69 @@
 body {
-    font-family: Arial, sans-serif;
-    padding: 20px;
-    background-color: #f7f7f7;
+  font-family: 'Inter', sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
 }
 
-input {
-    padding: 8px;
-    width: 60%;
+.container {
+  max-width: 700px;
+  width: 90%;
+  margin-top: 50px;
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h2, h3 {
+  text-align: center;
+  color: #333;
+}
+
+input[type="text"] {
+  width: 95%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
 }
 
 button {
-    padding: 10px 15px;
-    margin: 5px;
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    cursor: pointer;
+  padding: 12px 20px;
+  margin: 10px 5px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: #007BFF;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
 }
 
 #predictionResult {
-    margin-top: 15px;
+  font-weight: bold;
+  font-size: 18px;
+  text-align: center;
+  margin: 15px 0;
+}
+
+ul#historyList {
+  list-style: none;
+  padding: 0;
+}
+
+#historyList li {
+  padding: 10px;
+  background-color: #f9f9f9;
+  margin: 8px 0;
+  border-radius: 6px;
+  font-size: 15px;
+  word-wrap: break-word;
+  border-left: 4px solid #007BFF;
 }
