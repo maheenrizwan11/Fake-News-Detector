@@ -11,7 +11,7 @@ from datetime import datetime
 app = Flask(__name__)
 CORS(app)
 
-FAKE_MODEL_PATH = "models/bert_fake_news_model"
+FAKE_MODEL_PATH = "maheen21/fake-news-bert"
 tokenizer = BertTokenizer.from_pretrained(FAKE_MODEL_PATH)
 model = BertForSequenceClassification.from_pretrained(FAKE_MODEL_PATH)
 model.eval()
