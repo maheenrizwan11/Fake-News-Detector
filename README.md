@@ -32,7 +32,7 @@ fake-news-detector/
 ├── requirements.txt
 └── README.md
 
-## 🧪 Run Locally
+## Run Locally
 1. Clone the repo:
    ```bash
    git clone https://github.com/yourusername/fake-news-detector.git
@@ -49,7 +49,7 @@ fake-news-detector/
    python app.py
 5. Open http://localhost:5000 in your browser.
    
-Future Improvements"
+Future Improvements
 Improve accuracy of the model
 Store history in backend instead of localStorage
 Integrate AI detection in the app
