@@ -14,23 +14,22 @@ A web application that helps users detect fake news articles simply by pasting a
 
 ## Project Structure
 fake-news-detector/
-│
 ├── models/
-│ └── bert_fake_news_model/
-│ ├── config.json
-│ ├── model.safetensors
-│ ├── vocab.txt
-│ └── tokenizer_config.json
+│   └── bert\_fake\_news\_model/
+│       ├── config.json
+│       ├── model.safetensors
+│       ├── vocab.txt
+│       ├── tokenizer\_config.json
 │
 ├── static/
-│ ├── styles.css
+│   └── styles.css
 │
 ├── templates/
-│ └── index.html
+│   └── index.html
 │
 ├── app.py
 ├── requirements.txt
-└── README.md
+├── README.md
 
 ## Run Locally
 1. Clone the repo:
