@@ -1,1 +1,22 @@
-[]
+[
+    {
+        "url": "https://theonion.com/if-i-take-a-bullet-for-my-child-how-will-they-learn-to-take-bullets-themselves/",
+        "result": "Likely Fake",
+        "timestamp": "2025-07-17 13:21:27"
+    },
+    {
+        "url": "https://theonion.com/study-majority-of-billionaires-consider-selves-middle-class/",
+        "result": "Likely Real",
+        "timestamp": "2025-07-17 13:20:56"
+    },
+    {
+        "url": "https://www.naturalnews.com/2025-07-16-hhs-misses-deadline-ethics-agreements-vaccine-advisers.html",
+        "result": "Likely Real",
+        "timestamp": "2025-07-17 13:20:00"
+    },
+    {
+        "url": "https://www.naturalnews.com/2025-07-16-study-link-thyroid-disease-gut-microbial-imbalances.html",
+        "result": "Likely Real",
+        "timestamp": "2025-07-17 13:19:45"
+    }
+]
