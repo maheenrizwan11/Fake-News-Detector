@@ -31,6 +31,8 @@ fake-news-detector/
 ├── requirements.txt
 ├── README.md
 
+## Hugging Face model link: https://huggingface.co/maheen21/fake-news-bert
+
 ## Run Locally
 1. Clone the repo:
    ```bash
