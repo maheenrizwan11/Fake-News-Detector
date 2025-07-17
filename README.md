@@ -49,13 +49,13 @@ fake-news-detector/
    python app.py
 5. Open http://localhost:5000 in your browser.
    
-Future Improvements
+## Future Improvements
 Improve accuracy of the model
 Store history in backend instead of localStorage
 Integrate AI detection in the app
 
-Screenshots
+## Screenshots
 <img width="765" height="543" alt="image" src="https://github.com/user-attachments/assets/520dfa54-6079-4285-96ac-76de5cf30ecc" />
 
-License
+## License
 MIT License
